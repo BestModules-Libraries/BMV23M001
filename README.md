@@ -6,8 +6,7 @@
 BMV23M001
 ===========================================================
 
-The BMV23M001 is a sound detection module launched by Basetron, which uses I2C communication method.This document describes the Arduino Lib function and Arduino Lib installation method of BMV23M001. The sample demonstrates the state of getting ambient sounds.
-
+The Best Modules BMV23M001 is a sound detector module, which uses the I2C communication method. This document provides the description of the BMV23M001 Arduino Lib functions and how to install the Arduino Lib. The example uses the BMV23M001 module to demonstrate the functions of getting ambient sound status.
 
 This library can be installed via the Arduino Library manager. Search for **BMV23M001**. 
 
