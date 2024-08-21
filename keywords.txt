@@ -6,7 +6,6 @@
 # Datatypes (KEYWORD1)
 #######################################
 BMV23M001	KEYWORD1
-soundDetector	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
@@ -19,14 +18,11 @@ getFWVer	KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################
-INT_STATUS_PIN	LITERAL1
-MODE_IIC	LITERAL1
-
+BMV23M001_ADDR	LITERAL1
+IIC_FREQUENCY	LITERAL1
 FAIL	LITERAL1
+StatusFAIL	LITERAL1
 CHECK_OK	LITERAL1
-#CHECK_ERROR	LITERAL1
+CHECK_ERROR	LITERAL1
 TIMEOUT_ERROR	LITERAL1
-PIN_GATE_IN	LITERAL1
-PIN_ENVELOPE_IN	LITERAL1
-PIN_AUDIO_IN	LITERAL1
   

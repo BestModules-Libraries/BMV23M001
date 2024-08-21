@@ -1,15 +1,15 @@
 /*****************************************************************
-File:             BMV23M001.h
-Author:           BESTMODULES
-Description:      Define classes and required variables
-History：         
-V1.0.0   -- initial version；2022-011-28；Arduino IDE : v1.8.16
+File:       BMV23M001.h
+Author:     BEST MODULES CORP.
+Description:Define classes and required variables
+History:    V1.0.2   -- 2024-08-20 
 ******************************************************************/
 #ifndef _BMV23M001_H_
 #define _BMV23M001_H_
 
+#include <arduino.h>
 #include <Wire.h>
-#include "delay.h"
+
 #define BMV23M001_ADDR  (0x4B)
 #define IIC_FREQUENCY   (100000)  
 #define FAIL            (0)

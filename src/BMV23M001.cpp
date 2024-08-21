@@ -1,18 +1,15 @@
  /*****************************************************************
-File:             BME63M001->cpp
-Author:           BESTMODULES
-Description:      Define classes and required variables if this class 
-          has parameters,input parameters when this class defined 
-          the class(this function) can call its members in current
-          function,or by called outside else
-History：         
-V1.0.1-- initial version；2022-11-15；Arduino IDE : ≥v1.8.13
+File:       BMV23M001.cpp
+Author:     BEST MODULES CORP.
+Description:Communicate with BMV23M001 through IIC and measure sound
+History:    V1.0.2-- 2024-08-20 
 ******************************************************************/
-#include <BMV23M001.h>
+#include "BMV23M001.h"
 
 /**********************************************************
-Description: Constructor
-Parameters: :     *theWire : TwoWire object if your board has more than one TwoWire interface                         
+Description:  Constructor
+Parameters:   statusPin:Sound interrupt pin
+	      *theWire : TwoWire object if your board has more than one TwoWire interface                         
 Return:          
 Others:     
 **********************************************************/
@@ -22,9 +19,9 @@ BMV23M001::BMV23M001(uint8_t statusPin,TwoWire* theWire)
    _wire =  theWire;
 } 
 /**********************************************************
-Description: Module Initial
-Parameters: :       frequency: IIC Communication frequency  
-                    address : Set the Module  slaverAddr(Unique Value 0x4B)        
+Description:  Module Initial
+Parameters:   i2c_addr: Set the Module  slaverAddr(Unique Value 0x4B)
+              frequency: IIC Communication frequency               
 Return:          
 Others:         
 **********************************************************/
@@ -49,72 +46,70 @@ Others:
 **********************************************************/
 uint8_t BMV23M001::getStatus()
 {
-     return (digitalRead(_statusPin));
+  return (digitalRead(_statusPin));
 } 
 
 /**********************************************************
 Description: Read the sound status with IIC
-Parameters:       &soundStatus : Parameter to be modified
-                  soundStatus: 0:Sound quiet   1:Sound play
-Return:      Communication status 0:Fail   
+Parameters:       
+Return:      0x03(StatusFAIL):fail 0x00:Sound quiet   0x01:Sound play 
 Others:          
 **********************************************************/
 uint8_t BMV23M001::readSoundStatus()
 {
-    uint8_t checkSum = 0;
-    uint8_t soundStatusBuf[7] = {0};
-    uint8_t soundStatus=0;
+  uint8_t checkSum = 0;
+  uint8_t soundStatusBuf[7] = {0};
+  uint8_t soundStatus=0;
 
-    checkSum = (uint8_t)(0xA5+0x5A+0x01+0x01);
-    uint8_t soundCMD[5]={0xA5,0x5A,0x01,0x01,checkSum};
-    writeBytes(soundCMD,5);
+  checkSum = (uint8_t)(0xA5+0x5A+0x01+0x01);
+  uint8_t soundCMD[5]={0xA5,0x5A,0x01,0x01,checkSum};
+  writeBytes(soundCMD,5);
   
-    if(readBytes(soundStatusBuf,6) == CHECK_OK)//checksum success
-    {
-        soundStatus = soundStatusBuf[4];
-        delay(1);
-        return soundStatus;
-    }
-    else //checksum fail
-    {
+  if(readBytes(soundStatusBuf,6) == CHECK_OK)//checksum success
+  {
+    soundStatus = soundStatusBuf[4];
+    delay(1);
+    return soundStatus;
+  }
+  else //checksum fail
+  {
     return  StatusFAIL;
-    }
+  }
 }
-
 /**********************************************************
 Description: Read the envelope ADC with IIC
-Parameters:       &soundDetectorEnvelopeADC : Parameter to be modified
-                  soundDetectorEnvelopeADC:Envelope ADC low byte + Envelope ADC high byte     
-Return:      Communication status 0:Fail   
+Parameters:     
+Return:      EVN pin ADC value   
 Others:          
 **********************************************************/
 uint16_t BMV23M001::readSoundEnvelopeADC( )
 {
-    uint8_t checkSum = 0;
-    uint8_t ADCBuf[7] = {};
-    uint16_t soundDetectorEnvelopeADC=0;
+  uint8_t checkSum = 0;
+  uint8_t ADCBuf[7] = {};
+  uint16_t soundDetectorEnvelopeADC=0;
 
-    checkSum = (uint8_t)(0xA5+0x5A+0x01+0x02);
-    uint8_t ADCCMD[5]={0xA5,0x5A,0x01,0x02,checkSum};
-    writeBytes(ADCCMD,5);
+  checkSum = (uint8_t)(0xA5+0x5A+0x01+0x02);
+  uint8_t ADCCMD[5]={0xA5,0x5A,0x01,0x02,checkSum};
+  writeBytes(ADCCMD,5);
     
-    if(readBytes(ADCBuf,7) == CHECK_OK)//checksum success
-    {
-        soundDetectorEnvelopeADC = ADCBuf[4];
-        soundDetectorEnvelopeADC = (soundDetectorEnvelopeADC<<8)+ADCBuf[5];
-        delay(1);
-        return soundDetectorEnvelopeADC;
-    }
-    else //checksum fail
-    {
-        return  FAIL;
-    }
+  if(readBytes(ADCBuf,7) == CHECK_OK)//checksum success
+  {
+    soundDetectorEnvelopeADC = ADCBuf[4];
+    soundDetectorEnvelopeADC = (soundDetectorEnvelopeADC<<8)+ADCBuf[5];
+    delay(1);
+    return soundDetectorEnvelopeADC;
+  }
+  else //checksum fail
+  {
+    return  FAIL;
+  }
 }
 /**********************************************************
 Description: Get the version information with IIC
-Parameters:     &ver :Variables for storing Version information
-                ver:version information low byte + version information high byte 
-Return:      Communication status 0:Fail   
+Parameters:
+Return:      version information
+		0:fail 
+		other:VERSION
 Others:      
 **********************************************************/
 uint16_t BMV23M001::getFWVer()
@@ -143,7 +138,7 @@ uint16_t BMV23M001::getFWVer()
 Description: writeBytes
 Parameters:  wbuf :the bytes sent
              wlen :the length of the data sent          
-Return:        
+Return:      void        
 Others:      
 **********************************************************/
 void BMV23M001::writeBytes(uint8_t wbuf[], uint8_t wlen)
@@ -164,7 +159,7 @@ void BMV23M001::writeBytes(uint8_t wbuf[], uint8_t wlen)
 Description: read Bytes
 Parameters:  rbuf :the bytes receive
              rlen :the length of the data receive
-Return:        
+Return:      0x00(CHECK_OK):ok 0x01(CHECK_ERROR):error 0x02(TIMEOUT_ERROR):time out    
 Others: 
 **********************************************************/
 uint8_t BMV23M001::readBytes(uint8_t rbuf[], uint8_t rlen)

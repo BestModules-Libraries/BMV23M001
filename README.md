@@ -21,7 +21,7 @@ Repository Contents
 Documentation 
 -------------------
 
-* **[BMV23M001 Arduino Library V1.0.1 Description v100]( https://www.bestmodulescorp.com/bmv23m001.html#tab-product2 )** - Arduino Library Description.
+* **[BMV23M001 Arduino Library Description]( https://www.bestmodulescorp.com/bmv23m001.html#tab-product2 )** - Arduino Library Description.
 
 Version History  
 -------------------
@@ -35,8 +35,8 @@ This product is _**open source**_!
 
 Please review the LICENSE.md file for license information. 
 
-If you have any questions or concerns on licensing, please contact technical support on our BESTMODULES Email:service@bestmodulescorp.com
+If you have any questions or concerns on licensing, please contact technical support on our BEST MODULES CORP. Email:service@bestmodulescorp.com
 
 Distributed as-is; no warranty is given.
 
-BESTMODULES
+BEST MODULES CORP.
