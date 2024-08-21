@@ -26,8 +26,12 @@ Documentation
 Version History  
 -------------------
 
-* **V1.0.1** - Initial public release.
-
+* **V1.0.1**  
+&emsp;&emsp;- Initial public release.
+* **V1.0.2**  
+&emsp;&emsp;- Delete #include "delay.h";  
+&emsp;&emsp;- Add #include "arduino.h";  
+&emsp;&emsp;- Changed the picture in examples;  
 License Information
 -------------------
 
