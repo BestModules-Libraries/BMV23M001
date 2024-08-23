@@ -27,10 +27,9 @@ Version History
 -------------------
 
 * **V1.0.1**  
-&emsp;&emsp;- Initial public release.
+&emsp;&emsp;- Initial public release.  
 * **V1.0.2**  
-&emsp;&emsp;- Delete #include "delay.h";  
-&emsp;&emsp;- Add #include "arduino.h";  
+&emsp;&emsp;- Changed the.h document to be compatible with Arduino UNO development board;  
 &emsp;&emsp;- Changed the picture in examples;  
 License Information
 -------------------
