@@ -2,7 +2,7 @@
 File:       BMV23M001.h
 Author:     BEST MODULES CORP.
 Description:Define classes and required variables
-History:    V1.0.2   -- 2024-08-20 
+History:    V1.0.3   -- 2025-04-02 
 ******************************************************************/
 #ifndef _BMV23M001_H_
 #define _BMV23M001_H_

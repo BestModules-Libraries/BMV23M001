@@ -11,8 +11,8 @@ note:connection method(Sound Detector:Arduino pin):GND:GND VDD:3V3 SDA:SDA1 SCL:
 ******************************************************************/
 #include <BMV23M001.h>
 
-BMV23M001 soundDetector(2,&Wire);//Please comment out this line of code if you don't use Wire
-//BMV23M001 soundDetector(22,&Wire1);//Please uncomment out this line of code if you use Wire1 on BMduino
+//BMV23M001 soundDetector(2,&Wire);//Please comment out this line of code if you don't use Wire
+BMV23M001 soundDetector(22,&Wire1);//Please uncomment out this line of code if you use Wire1 on BMduino
 //BMV23M001 soundDetector(25,&Wire2);//Please uncomment out this line of code if you use Wire2 on BMduino
 
 uint16_t envelopeADC  = 0;

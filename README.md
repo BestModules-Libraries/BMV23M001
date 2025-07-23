@@ -6,7 +6,18 @@
 BMV23M001
 ===========================================================
 
-The Best Modules BMV23M001 is a sound detector module, which uses the I2C communication method. This document provides the description of the BMV23M001 Arduino Lib functions and how to install the Arduino Lib. The example uses the BMV23M001 module to demonstrate the functions of getting ambient sound status.
+The Best Modules BMV23M001 is a sound detector module, which uses the I2C communication method. This document provides the description of the BMV23M001/BMV23M001A Arduino Lib functions and how to install the Arduino Lib. The example uses the BMV23M001/BMV23M001A module to demonstrate the functions of getting ambient sound status.
+
+#### Applicable types:
+<div align=center>
+
+|Paet No.   |Description                              |
+|:---------:|:---------------------------------------:|
+|BMV23M001 |Sound Detector Module|
+|BMV23M001A|Sound Detector Module|
+
+</div> 
+
 
 This library can be installed via the Arduino Library manager. Search for **BMV23M001**. 
 
@@ -31,7 +42,11 @@ Version History
 * **V1.0.2**  
 &emsp;&emsp;- Changed the.h document to be compatible with Arduino UNO development board;  
 &emsp;&emsp;- Changed the picture in examples;  
+* **V1.0.3**  
+&emsp;&emsp;- Add applicable models: BMV23M001A; 
+
 License Information
+
 -------------------
 
 This product is _**open source**_! 

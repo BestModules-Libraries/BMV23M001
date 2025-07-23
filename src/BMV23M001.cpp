@@ -2,7 +2,7 @@
 File:       BMV23M001.cpp
 Author:     BEST MODULES CORP.
 Description:Communicate with BMV23M001 through IIC and measure sound
-History:    V1.0.2-- 2024-08-20 
+History:    V1.0.3-- 2025-04-02 
 ******************************************************************/
 #include "BMV23M001.h"
 
